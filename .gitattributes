@@ -1,0 +1,9 @@
+* text=auto eol=lf
+*.bat text eol=crlf
+*.cmd text eol=crlf
+
+/.github export-ignore
+/contract/fixtures export-ignore
+/examples export-ignore
+/tests export-ignore
+/CONTRIBUTING.md export-ignore
