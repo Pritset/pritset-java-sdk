@@ -90,7 +90,7 @@ final class PritsetClientTest {
         assertTrue(request.rawQuery().contains("sorts%5B0%5D.sortDirection=0"));
         assertEquals("access-token", request.header("Authorization"));
         assertEquals("client-secret", request.header("X-Secret"));
-        assertEquals("pritset-java/0.1.0", request.header("User-Agent"));
+        assertEquals("pritset-java/0.1.5", request.header("User-Agent"));
     }
 
     @Test

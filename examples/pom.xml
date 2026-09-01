@@ -5,7 +5,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.pritset.examples</groupId>
   <artifactId>generate-pdf</artifactId>
-  <version>0.1.0</version>
+  <version>0.1.5</version>
 
   <properties>
     <maven.compiler.release>17</maven.compiler.release>
@@ -16,7 +16,7 @@
     <dependency>
       <groupId>com.pritset</groupId>
       <artifactId>pritset-java</artifactId>
-      <version>0.1.0</version>
+      <version>0.1.5</version>
     </dependency>
   </dependencies>
 

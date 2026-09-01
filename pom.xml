@@ -6,7 +6,7 @@
 
   <groupId>com.pritset</groupId>
   <artifactId>pritset-java</artifactId>
-  <version>0.1.0</version>
+  <version>0.1.5</version>
   <packaging>jar</packaging>
 
   <name>Pritset Java SDK</name>
@@ -31,7 +31,7 @@
     <connection>scm:git:https://github.com/pritset/pritset-java-sdk.git</connection>
     <developerConnection>scm:git:ssh://git@github.com/pritset/pritset-java-sdk.git</developerConnection>
     <url>https://github.com/pritset/pritset-java-sdk</url>
-    <tag>HEAD</tag>
+    <tag>v${project.version}</tag>
   </scm>
 
   <properties>
@@ -119,6 +119,11 @@
             </manifestEntries>
           </archive>
         </configuration>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-dependency-plugin</artifactId>
+        <version>3.9.0</version>
       </plugin>
     </plugins>
   </build>

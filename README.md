@@ -2,7 +2,7 @@
 
 Official Java client for managing Pritset DOCX templates and generating PDFs.
 
-Version `0.1.0` targets Pritset SDK contract `1.0.0`.
+Version `0.1.5` targets Pritset SDK contract `1.0.0`.
 
 ## Requirements
 
@@ -14,13 +14,13 @@ CI verifies Java 17, 21, and 25. The SDK uses Java's built-in `HttpClient` and J
 
 ## Installation
 
-After the first Maven Central release:
+Install version `0.1.5` from Maven Central:
 
 ```xml
 <dependency>
   <groupId>com.pritset</groupId>
   <artifactId>pritset-java</artifactId>
-  <version>0.1.0</version>
+  <version>0.1.5</version>
 </dependency>
 ```
 
@@ -226,6 +226,20 @@ The example reads `PRITSET_ACCESS_TOKEN` and `PRITSET_SECRET` and saves `invoice
 
 - SDK contract: [`pritset/pritset-sdk-contract`](https://github.com/pritset/pritset-sdk-contract), version `1.0.0`
 - API documentation: [pritset.com/docs/api](https://pritset.com/docs/api)
+
+## Production test-user lifecycle
+
+The opt-in lifecycle validates a DOCX, creates, lists, reads, updates, downloads, and deletes a temporary template, generates a PDF, submits a webhook generation job, and confirms the deleted template returns `404`. It verifies webhook submission only; webhook delivery must be monitored separately.
+
+The test uses real production credit and must run only with the dedicated production test user. Copy `.env.example` to `.env`, enter the production test-user credentials and a controlled HTTPS webhook URL, then change both production guard values to `true` only after confirming the account is the dedicated test user. Run:
+
+```powershell
+& ./scripts/run-production-test.ps1
+```
+
+The launcher validates the configuration, builds without credentials in the process environment, asks you to type `RUN-PRODUCTION-TEST`, and runs the compiled lifecycle with secrets loaded only for that final process. It always attempts to remove a created template, including when creation returns an ambiguous failure.
+
+GitHub Actions provides the same test through the **Production test-user lifecycle** workflow. Configure the `production-test` environment with approval protection; add `PRITSET_ACCESS_TOKEN`, `PRITSET_SECRET`, and `PRITSET_WEBHOOK_URL` secrets plus a `PRITSET_PRODUCTION_TEST_USER_CONFIRMED` environment variable set to the exact value `true`. The optional `PRITSET_WEBHOOK_SETTLE_SECONDS` environment variable defaults to 10 seconds.
 
 ## Development
 
